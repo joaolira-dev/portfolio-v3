@@ -1081,9 +1081,6 @@ footer small {
   transform: translateY(-3px) rotate(-5deg);
   box-shadow: 0 5px 12px #4b2d7133;
 }
-.reprato-shot > img {
-  object-position: top left;
-}
 .project-art > img {
   transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.25, 1);
 }
@@ -1186,11 +1183,11 @@ footer small {
 .evoluir-shot .photo-label {
   bottom: 14px;
 }
-.reprato-shot {
-  background: #f7f3ea;
+.fila-viva-shot {
+  background: #edf3ed;
 }
-.reprato-shot > img {
-  object-position: top left;
+.fila-viva-shot > img {
+  object-position: center top;
 }
 .skills span img[src$="aws.svg"] {
   width: 25px;

@@ -1183,10 +1183,10 @@ footer small {
 .evoluir-shot .photo-label {
   bottom: 14px;
 }
-.fila-viva-shot {
-  background: #edf3ed;
+.login-auth-shot {
+  background: #9160ed;
 }
-.fila-viva-shot > img {
+.login-auth-shot > img {
   object-position: center top;
 }
 .skills span img[src$="aws.svg"] {

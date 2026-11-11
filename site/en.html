@@ -9,16 +9,28 @@
     />
     <title>João Lira — Software Engineer</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap"
+    />
     <link rel="stylesheet" href="style.css" />
+    <meta name="theme-color" content="#25143d" />
     <script src="motion.js" defer></script>
   </head>
   <body>
     <a class="skip" href="#conteudo">Skip to content</a>
+    <div class="scroll-progress" aria-hidden="true"></div>
+    <div class="header-bar">
     <header class="header wrap">
       <a class="logo" href="#inicio" aria-label="João Lira, início"
         >joão<span>.</span></a
       >
-      <nav aria-label="Main navigation">
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+      <nav id="menu" aria-label="Main navigation">
         <a href="#projetos">Projects</a><a href="#experiencia">Experience</a
         ><a href="#sobre">About</a
         ><a class="nav-contact" href="#contato"
@@ -48,18 +60,24 @@
         >
       </nav>
     </header>
+    </div>
     <main id="conteudo">
       <section id="inicio" class="hero wrap">
+        <div class="hero-glow" aria-hidden="true"></div>
         <div class="hero-main">
           <p class="eyebrow">
             <span class="dot"></span> FULL STACK DEVELOPER
             <span class="slash">/</span> JOÃO PESSOA, PB
           </p>
           <h1>
-            Software<br /><em>Engineer</em><span class="period"
+            Software<br /><em data-scramble>Engineer</em><span class="period"
               >.</span
             >
           </h1>
+          <p class="rotator" aria-hidden="true">
+            <span class="rotator-prompt">&gt; building</span>
+            <span class="rotator-word" data-words="REST APIs with Spring Boot|React interfaces|Business logic|AI integrations">REST APIs with Spring Boot</span><span class="caret"></span>
+          </p>
           <p class="intro">
             Hi, I’m João. I build web applications, from APIs and business logic
             to interfaces that connect people and technology.
@@ -107,6 +125,10 @@
           </div>
         </div>
         <div class="portrait">
+          <svg class="portrait-ring" viewBox="0 0 200 200" aria-hidden="true">
+            <defs><path id="ring-path" d="M100,100 m-88,0 a88,88 0 1,1 176,0 a88,88 0 1,1 -176,0" /></defs>
+            <text><textPath href="#ring-path" textLength="548">JAVA ✦ SPRING BOOT ✦ REACT ✦ FULL STACK ✦ JOÃO PESSOA, BRAZIL ✦ CODE WITH PURPOSE ✦ </textPath></text>
+          </svg>
           <img
             src="assets/perfil-avatar.png"
             alt="Illustration of João Victor Lira"
@@ -114,6 +136,8 @@
         </div>
         <div class="hero-bottom">
           <span>JAVA · SPRING BOOT · REACT</span
+          ><button class="cmdk-hint" type="button" aria-label="Open command terminal">
+            PRESS <kbd>/</kbd> FOR THE TERMINAL</button
           ><span
             >SCROLL TO EXPLORE
             <svg
@@ -147,7 +171,7 @@
           </p>
         </div>
         <div class="project-list">
-          <article class="project">
+          <article data-tech="java spring react jwt" class="project">
             <div class="project-art screenshot-art login-auth-shot">
               <div class="window-bar" aria-hidden="true">
                 <span></span><span></span><span></span
@@ -195,7 +219,7 @@
               ></a>
             </div>
           </article>
-          <article class="project reverse">
+          <article data-tech="java spring react mysql" class="project reverse">
             <div class="project-art screenshot-art evoluir-shot">
               <div class="window-bar" aria-hidden="true">
                 <span></span><span></span><span></span
@@ -242,7 +266,7 @@
               ></a>
             </div>
           </article>
-          <article class="project">
+          <article data-tech="react nodejs express mongodb" class="project">
             <div class="project-art screenshot-art">
               <div class="window-bar" aria-hidden="true">
                 <span></span><span></span><span></span
@@ -331,8 +355,12 @@
               <span>● ● ●</span><small>joao@portfolio:~ / experience</small
               ><b>_</b>
             </div>
+            <p class="term-line" aria-hidden="true">
+              <span class="term-prompt">$</span>
+              <span class="term-cmd">cat experience.log</span><span class="term-caret"></span>
+            </p>
             <div class="timeline-item">
-              <span class="timeline-date">AUG 2025 — OCT 2026</span>
+              <span class="timeline-date">AUG 2025 — NOV 2026</span>
               <div>
                 <h3>Full Stack Development</h3>
                 <p class="company">RPE Tech · Internship</p>
@@ -478,7 +506,17 @@
                       stroke-linejoin="round"
                     /></svg></span
               ></a>
+              <div class="contact-meta">
+                <button class="copy-email" type="button" data-email="joaoliradev@hotmail.com">
+                  <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2" /><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1" /></svg>
+                  Copy email
+                </button>
+                <span class="local-time"><span class="live-dot"></span>Now in João Pessoa <time>--:--</time></span>
+              </div>
             </div>
+          </div>
+          <div class="marquee" aria-hidden="true">
+            <div class="marquee-track"><span>LET’S TALK ✦ VAMOS CONVERSAR ✦ LET’S BUILD ✦ LET’S TALK ✦ VAMOS CONVERSAR ✦ LET’S BUILD ✦ LET’S TALK ✦ VAMOS CONVERSAR ✦ LET’S BUILD ✦ </span><span>LET’S TALK ✦ VAMOS CONVERSAR ✦ LET’S BUILD ✦ LET’S TALK ✦ VAMOS CONVERSAR ✦ LET’S BUILD ✦ LET’S TALK ✦ VAMOS CONVERSAR ✦ LET’S BUILD ✦ </span></div>
           </div>
           <footer>
             <a class="logo" href="#inicio">joão<span>.</span></a>

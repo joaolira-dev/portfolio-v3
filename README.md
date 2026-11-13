@@ -2,7 +2,7 @@
 
 # joão. — Portfólio
 
-**Portfólio pessoal bilíngue de João Lira, desenvolvedor full stack em João Pessoa, PB.**
+**Portfólio pessoal.**
 Projetos, experiência e tecnologias, num site leve, animado e acessível, feito só com HTML, CSS e JavaScript.
 
 [![Ver ao vivo](https://img.shields.io/badge/ver%20ao%20vivo-joaoliradev--portfolio.vercel.app-562b91?style=for-the-badge)](https://joaoliradev-portfolio.vercel.app/)

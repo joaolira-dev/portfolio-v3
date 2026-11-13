@@ -437,13 +437,35 @@
 
   if (!finePointer) return;
 
-  // Brilho que segue o mouse no hero
+  // Brilho que segue o mouse por toda a largura do hero
   const hero = $(".hero");
-  hero?.addEventListener("pointermove", (e) => {
-    const r = hero.getBoundingClientRect();
-    hero.style.setProperty("--gx", `${e.clientX - r.left}px`);
-    hero.style.setProperty("--gy", `${e.clientY - r.top}px`);
-  });
+  const glow = $(".hero-glow");
+  if (hero && glow) {
+    let frame = 0;
+    let pointer = null;
+    const update = () => {
+      frame = 0;
+      if (!pointer) return;
+      const h = hero.getBoundingClientRect();
+      const inside = pointer.y >= h.top && pointer.y <= h.bottom;
+      glow.classList.toggle("is-on", inside);
+      if (!inside) return;
+      const g = glow.getBoundingClientRect();
+      glow.style.setProperty("--gx", `${pointer.x - g.left}px`);
+      glow.style.setProperty("--gy", `${pointer.y - g.top}px`);
+    };
+    document.addEventListener(
+      "pointermove",
+      (e) => {
+        pointer = { x: e.clientX, y: e.clientY };
+        if (!frame) frame = requestAnimationFrame(update);
+      },
+      { passive: true },
+    );
+    document.documentElement.addEventListener("mouseleave", () =>
+      glow.classList.remove("is-on"),
+    );
+  }
 
   // Botões magnéticos
   $$(".button, .nav-contact").forEach((el) => {

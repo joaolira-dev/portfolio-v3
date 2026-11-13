@@ -471,7 +471,6 @@ a:focus-visible {
 }
 .hero {
   position: relative;
-  overflow: hidden;
 }
 .hero-main {
   position: relative;
@@ -1279,20 +1278,61 @@ nav > a.is-active {
 }
 
 /* Hero */
+@property --gx {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 70vw;
+}
+@property --gy {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 280px;
+}
 .hero-glow {
   position: absolute;
-  inset: 0;
+  top: 0;
+  bottom: 0;
+  left: calc(50% - 50vw);
+  right: calc(50% - 50vw);
   z-index: 0;
   pointer-events: none;
-  background: radial-gradient(
-    460px circle at var(--gx, 70%) var(--gy, 30%),
-    #b98cff30,
-    transparent 62%
+  background:
+    radial-gradient(
+      380px circle at var(--gx) var(--gy),
+      #c9a4ff3d,
+      transparent 70%
+    ),
+    radial-gradient(
+      820px circle at var(--gx) var(--gy),
+      #a97bf02e,
+      transparent 68%
+    ),
+    radial-gradient(
+      1500px circle at var(--gx) var(--gy),
+      #8656d81c,
+      transparent 72%
+    );
+  -webkit-mask-image: linear-gradient(
+    180deg,
+    transparent,
+    #000 16%,
+    #000 78%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    180deg,
+    transparent,
+    #000 16%,
+    #000 78%,
+    transparent
   );
   opacity: 0;
-  transition: opacity 0.6s ease;
+  transition:
+    opacity 0.7s ease,
+    --gx 0.45s cubic-bezier(0.2, 0.7, 0.25, 1),
+    --gy 0.45s cubic-bezier(0.2, 0.7, 0.25, 1);
 }
-.hero:hover .hero-glow {
+.hero-glow.is-on {
   opacity: 1;
 }
 .hero-bottom {
@@ -1341,36 +1381,12 @@ nav > a.is-active {
 [data-scramble].is-scrambling {
   color: var(--accent);
 }
-.portrait {
-  overflow: visible;
-}
 .portrait img {
   clip-path: circle(47.6% at 50% 50%);
 }
 @media (min-width: 801px) {
   .hero {
     min-height: 700px;
-  }
-}
-.portrait-ring {
-  position: absolute;
-  inset: -40px;
-  width: calc(100% + 80px);
-  height: calc(100% + 80px);
-  overflow: visible;
-  pointer-events: none;
-  animation: spin 30s linear infinite;
-}
-.portrait-ring text {
-  font:
-    600 8.6px "IBM Plex Mono",
-    monospace;
-  letter-spacing: 0.1em;
-  fill: #8a5fd0;
-}
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
   }
 }
 .cmdk-hint {
@@ -1863,7 +1879,6 @@ nav > a.is-active {
 
 @media (prefers-reduced-motion: reduce) {
   .hero:before,
-  .portrait-ring,
   .marquee-track,
   .caret,
   .term-caret,
@@ -1889,4 +1904,9 @@ nav > a.is-active {
     font-size: 13px;
     margin-top: -6px;
   }
+}
+
+/* O brilho e o blob do hero passam das bordas: corta só na horizontal */
+main {
+  overflow-x: clip;
 }
